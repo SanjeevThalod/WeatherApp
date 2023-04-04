@@ -27,17 +27,17 @@ search.addEventListener('click',function(e){
             }else{
                 if(data.current.is_day == 'no'){
                     w_image.innerHTML = `<img src="image/night.png" alt="">`;
-                }else if(data.current.weather_descriptions == 'Haze'){
+                }else if(data.current.condition.text == 'Haze'){
                     w_image.innerHTML = `<img src="image/cloudy.png" alt="">`;
-                }else if(data.current.weather_descriptions == 'Sunny'){
+                }else if(data.current.condition.text == 'Sunny'){
                     w_image.innerHTML = `<img src="image/sun.png" alt="">`;
-                }else if(data.current.weather_descriptions == 'Cloudy'){
+                }else if(data.current.condition.text == 'Cloudy'){
                     w_image.innerHTML = `<img src="image/cloudy (1).png" alt="">`
-                }else if(data.current.weather_descriptions == 'Rainy'){
+                }else if(data.current.condition.text == 'Rainy'){
                     w_image.innerHTML = `<img src="image/rain.png" alt="">`;
-                }else if(data.current.weather_descriptions == 'Snow'){
+                }else if(data.current.condition.text == 'Snow'){
                     w_image.innerHTML = `<img src="image/snow.png" alt="">`;
-                }else if(data.current.weather_descriptions == 'Mist'){
+                }else if(data.current.condition.text == 'Mist'){
                     w_image.innerHTML = `<img src="image/fog.png" alt="">`;
                 }else{
                     w_image.innerHTML = `<img src="image/cloudy.png" alt="">`;
@@ -45,16 +45,16 @@ search.addEventListener('click',function(e){
                 cimage.classList.remove('none');
                 details.classList.remove('none');
                 extra_details.classList.remove('none');
-                degree.innerText = data.current.temperature;
-                text.innerText = data.current.weather_descriptions;
+                degree.innerText = data.current.temp_c;
+                text.innerText = data.current.condition.text;
                 h_text.innerText = data.current.humidity;
-                w_text = data.current.wind_speed;
+                w_text = data.current.wind_kph;
                 console.log(data.current);
                 console.log(data[1]);
                 console.log(data[2]);
             }
         }
     }
-    http.open('GET','http://api.weatherstack.com/current?access_key=baeca5751f0721943716171a11a36f43&query='+input.value,true);
+    http.open('GET','https://api.weatherapi.com/v1/current.json?key=894db0d316c041789ca54654230404&q='+input.value+'&aqi=no',true);
     http.send();
 });
