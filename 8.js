@@ -17,7 +17,7 @@ search.addEventListener('click',function(e){
         if(this.readyState == 4){
             var data = JSON.parse(this.responseText);
             console.log(data);
-            if(data.success == false){
+            if(data.error != undefined){
                 w_image.innerHTML = `<img src="image/error.png" alt="">`
                 cimage.classList.remove('none');
                 details.classList.remove('none');
